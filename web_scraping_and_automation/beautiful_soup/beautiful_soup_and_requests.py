@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 # Using the requests module, we use the "get" function
 # provided to access the webpage provided as an
 # argument to this function:
-result = requests.get("https://www.google.com/")
+result = requests.get("https://www.google.com/?hl=en")
 
 # To make sure that the website is accessible, we can
 # ensure that we obtain a 200 OK response to indicate
@@ -23,7 +23,7 @@ print(result.status_code)
 
 # We can also check the HTTP header of the website to
 # verify that we have indeed accessed the correct page:
-print(result.headers)
+# print(result.headers)
 
 # For more information on HTTP headers and the information
 # one can obtain from them, you may consult:
@@ -37,13 +37,14 @@ src = result.content
 # BeautifulSoup module to parse and process the source.
 # To do so, we create a BeautifulSoup object based on the
 # source variable we created above:
-soup = BeautifulSoup(src, 'lxml')
+# soup = BeautifulSoup(src, 'lxml')
+soup = BeautifulSoup(src, "html.parser")
 
 # Now that the page source has been processed via Beautifulsoup
 # we can access specific information directly from it. For instance,
 # say we want to see a list of all of the links on the page:
 links = soup.find_all("a")
-print(links)
+# print(links)
 print("\n")
 
 # Perhaps we just want to extract the link that has contains the text
